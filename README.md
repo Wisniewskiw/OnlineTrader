@@ -3,7 +3,7 @@ An online trader using CEX.IO  api  and sending emails if an algo suggests a tra
 
 Test python notebook included with simple turle trading algorithm.
 
-In order the latter works one must includetheir email and CEX.IO api credencials in json_files/data.json . 
+In order the latter works one must include their email and CEX.IO api credencials in json_files/data.json. 
 
 In json_files folder other files contain turle trading algorithm parameters.
 
