@@ -172,10 +172,10 @@ class TurtleBuyOnlyOnlineStrategy(ota.OnlineStrategiesCrypto):
     def buy(self, feed):
         self.capital_before_lastbuy = max(self.capital, self.capital_before_lastbuy)
         self.capital_floating = self.crypto_initial * feed['bid'] * (1 - self.fees)
-        add_msg1 = 'Capital before last buy :' + str(self.capital_before_lastbuy)
-        add_msg2 = ', Capital floating :' + str(self.capital_floating)
+        self.add_msg1 = 'Capital before last buy :' + str(self.capital_before_lastbuy)
+        self.add_msg2 = ', Capital floating :' + str(self.capital_floating)
 
-        if ( feed['ask'] > self.turtle_upper_bound and len(self.buy_order_floating) == 0 ):
+    if ( feed['ask'] > self.turtle_upper_bound and len(self.buy_order_floating) == 0 ):
             self.capital_before_lastbuy = self.capital
             step = self.capital * (1.0 - self.fees)
             self.crypto_initial += np.round(step / feed['ask'], 8)
@@ -183,8 +183,8 @@ class TurtleBuyOnlyOnlineStrategy(ota.OnlineStrategiesCrypto):
             self.stop_loss = feed['ask'] - self.buy_coefficient * self.turtle_N  # set stop loss
 
             self.positions += [{"time": feed['timestamp'], "symbol": self.crypto_symbol, "price": feed['ask'], 'order': 'buy'}]
-            self.buy_order_floating = 1
-            self.send_email_order(self.positions[-1], add_msg1 + add_msg2)
+            self.buy_order_floating = self.positions[-1]
+            self.send_email_order(self.positions[-1], self.add_msg1 + self.add_msg2)
             self.buy_order_floating = self.positions.copy()
 
     def sell(self, feed):
@@ -199,9 +199,10 @@ class TurtleBuyOnlyOnlineStrategy(ota.OnlineStrategiesCrypto):
             self.capital_floating = self.capital
             self.capital_before_lastbuy = self.capital
             self.stop_loss, self.crypto_initial = 0.0, 0.0
-            self.buy_order_floating = 0
-            self.send_email_order(self.positions[-1], add_msg1 + add_msg2)
             self.buy_order_floating = []
+            self.add_msg1 = 'Capital before last buy :' + str(self.capital_before_lastbuy)
+            self.add_msg2 = ', Capital floating :' + str(self.capital_floating)
+            self.send_email_order(self.positions[-1], self.add_msg1 + self.add_msg2)
 
     def print_capital(self ):
 

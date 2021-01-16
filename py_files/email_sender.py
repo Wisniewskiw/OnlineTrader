@@ -32,7 +32,7 @@ class EmailSender:
         #message
         msg = MIMEText(mail_content, "plain", 'utf-8')
         msg["Subject"] = Header(mail_title, 'utf-8')
-        msg["From"] = sender_mail
+        msg["From"] = self.adress
         msg["To"] = receiver
         #send
         mailserver.sendmail(self.adress, receiver, msg.as_string())
