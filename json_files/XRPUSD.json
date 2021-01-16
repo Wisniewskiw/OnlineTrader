@@ -1,0 +1,15 @@
+{ 
+"capital":1000,   
+         "crypto_initial":0,    
+         "fees":0.0025 ,
+         "crypto_symbol":"BTC/USD",
+         "delta":60 ,   
+         "receiver_mail_address":"monsieurlabaguette@yandex.ru",
+    "buy_coefficient":1.1,
+         "sell_coefficient":0.98,
+       "delta1":1440,
+       "delta2":60,
+      "window_delta1":20,
+     "window_delta2":10,
+    "send_mail":true
+}
