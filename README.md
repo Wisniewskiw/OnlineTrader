@@ -1,5 +1,5 @@
 # OnlineTrader
-An online trader using cex.io  api  and sending emails if an algo suggests a trade.
+An online trader using CEX.IO  api  and sending emails if an algo suggests a trade.
 
 Test python notebook included with simple turle trading algorithm.
 
