@@ -2,7 +2,7 @@
  "capital":1000,   
          "crypto_initial":0,    
          "fees":0.0025 ,
-         "crypto_symbol":"BTC/USD",
+         "crypto_symbol":"LTC/USD",
          "delta":60 ,   
           "receiver_mail_address":"monsieurlabaguette@yandex.ru",
     "buy_coefficient":1.9,
